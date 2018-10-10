@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FormField from "../utils/Form/FormField";
-import { update } from "../utils/Form/FormActions";
+import { update, generateData, isFormValid } from "../utils/Form/FormActions";
 
 import { connect } from "react-redux";
 
@@ -51,7 +51,18 @@ class Login extends Component {
     });
   };
 
-  submitForm = () => {};
+  submitForm = event => {
+    event.preventDefault();
+
+    let dataToSubmit = generateData(this.state.formdata, "login");
+    let formIsValid = isFormValid(this.state.formdata, "login");
+
+    if (formIsValid) {
+    } else {
+      this.setState({ formError: true });
+    }
+    console.log(dataToSubmit);
+  };
 
   render() {
     return (
@@ -68,6 +79,12 @@ class Login extends Component {
             change={element => this.updateForm(element)}
           />
         </form>
+
+        {this.state.formError ? (
+          <div className="error_label">Please check your data</div>
+        ) : null}
+
+        <button onClick={this.submitForm}>Login</button>
       </div>
     );
   }
