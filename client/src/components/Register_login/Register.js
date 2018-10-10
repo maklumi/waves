@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import FormField from "../utils/Form/FormField";
 import { update, generateData, isFormValid } from "../utils/Form/FormActions";
-import { withRouter } from "react-router-dom";
+import Dialog from "@material-ui/core/Dialog";
 import { connect } from "react-redux";
-
-import { loginUser } from "../../store/actions/user_actions";
+import { registerUser } from "../../store/actions/user_actions";
 
 class Register extends Component {
   state = {
     formError: false,
-    formSuccess: "",
+    formSuccess: false,
     formdata: {
       name: {
         element: "input",
@@ -106,10 +105,25 @@ class Register extends Component {
     let formIsValid = isFormValid(this.state.formdata, "register");
 
     if (formIsValid) {
+      this.props
+        .dispatch(registerUser(dataToSubmit))
+        .then(response => {
+          console.log(response);
+          if (response.payload.success) {
+            this.setState({ formError: false, formSuccess: true });
+            setTimeout(() => {
+              this.props.history.push("/register_login");
+            }, 3000);
+          } else {
+            this.setState({ formError: true });
+          }
+        })
+        .catch(e => {
+          this.setState({ formError: true });
+        });
     } else {
       this.setState({ formError: true });
     }
-    console.log(dataToSubmit);
   };
 
   render() {
@@ -164,10 +178,16 @@ class Register extends Component {
               ) : null}
 
               <button onClick={this.submitForm}>Create an account</button>
-            </div>{" "}
-            */}
+            </div>
           </form>
         </div>
+
+        <Dialog open={this.state.formSuccess}>
+          <div className="dialog_alert">
+            <div>Congratulations</div>
+            <div>You will be redirected to LOGIN in a couple of seconds</div>
+          </div>
+        </Dialog>
       </div>
     );
   }
