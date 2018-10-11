@@ -44,7 +44,6 @@ export function getProductsToShop(
       articles: response.data.articles
     };
   });
-  console.log(request);
 
   return {
     type: GET_PRODUCTS_TO_SHOP,
