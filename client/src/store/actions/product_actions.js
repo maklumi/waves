@@ -3,7 +3,8 @@ import {
   GET_PRODUCT_BY_SELL,
   GET_PRODUCT_BY_ARRIVAL,
   GET_BRANDS,
-  GET_WOODS
+  GET_WOODS,
+  GET_PRODUCTS_TO_SHOP
 } from "./types";
 import { PRODUCT_SERVER } from "../../components/utils/misc";
 
@@ -25,6 +26,28 @@ export function getProductByArrival() {
 
   return {
     type: GET_PRODUCT_BY_ARRIVAL,
+    payload: request
+  };
+}
+
+export function getProductsToShop(
+  skip,
+  limit,
+  filters = [],
+  previousState = []
+) {
+  const data = { limit, skip, filters };
+
+  const request = axios.post(`${PRODUCT_SERVER}/shop`, data).then(response => {
+    return {
+      size: response.data.articles.length,
+      articles: response.data.articles
+    };
+  });
+  console.log(request);
+
+  return {
+    type: GET_PRODUCTS_TO_SHOP,
     payload: request
   };
 }
