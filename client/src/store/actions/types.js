@@ -5,3 +5,6 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 export const GET_PRODUCT_BY_SELL = "GET_PRODUCT_BY_SELL";
 export const GET_PRODUCT_BY_ARRIVAL = "GET_PRODUCT_BY_ARRIVAL";
+
+export const GET_BRANDS = "GET_BRANDS";
+export const GET_WOODS = "GET_WOODS";

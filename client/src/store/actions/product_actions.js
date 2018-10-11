@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_PRODUCT_BY_SELL, GET_PRODUCT_BY_ARRIVAL } from "./types";
+import {
+  GET_PRODUCT_BY_SELL,
+  GET_PRODUCT_BY_ARRIVAL,
+  GET_BRANDS,
+  GET_WOODS
+} from "./types";
 import { PRODUCT_SERVER } from "../../components/utils/misc";
 
 export function getProductBySell() {
@@ -23,3 +28,31 @@ export function getProductByArrival() {
     payload: request
   };
 }
+
+/**
+|--------------------------------------------------
+|  CATEGORIES
+|--------------------------------------------------
+*/
+
+export const getBrands = () => {
+  const request = axios
+    .get(`${PRODUCT_SERVER}/brands`)
+    .then(response => response.data);
+
+  return {
+    type: GET_BRANDS,
+    payload: request
+  };
+};
+
+export const getWoods = () => {
+  const request = axios
+    .get(`${PRODUCT_SERVER}/woods`)
+    .then(response => response.data);
+
+  return {
+    type: GET_WOODS,
+    payload: request
+  };
+};
