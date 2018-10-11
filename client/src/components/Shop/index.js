@@ -12,6 +12,8 @@ import { frets, price } from "../utils/Form/fixed_categories";
 import CollapseCheckBox from "../utils/CollapseCheckBox";
 import CollapseRadio from "../utils/CollapseRadio";
 import MoreCards from "./MoreCards";
+import FAI from "@fortawesome/react-fontawesome";
+import { faBars, faTh } from "@fortawesome/fontawesome-free-solid";
 
 class Shop extends Component {
   state = {
@@ -88,6 +90,12 @@ class Shop extends Component {
       });
   };
 
+  handleGrid = () => {
+    this.setState({
+      grid: !this.state.grid ? "grid_bars" : ""
+    });
+  };
+
   render() {
     const products = this.props.products;
     return (
@@ -123,7 +131,20 @@ class Shop extends Component {
             </div>
             <div className="right">
               <div className="shop_options">
-                <div className="shop_grids clear">grids</div>
+                <div className="shop_grids clear">
+                  <div
+                    className={`grid_btn ${this.state.grid ? "" : "active"}`}
+                    onClick={this.handleGrid}
+                  >
+                    <FAI icon={faTh} />
+                  </div>
+                  <div
+                    className={`grid_btn ${this.state.grid ? "active" : ""}`}
+                    onClick={this.handleGrid}
+                  >
+                    <FAI icon={faBars} />
+                  </div>
+                </div>
               </div>
               <div>
                 <MoreCards
