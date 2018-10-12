@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  ADD_PRODUCT,
+  CLEAR_PRODUCT,
   GET_PRODUCT_BY_SELL,
   GET_PRODUCT_BY_ARRIVAL,
   GET_BRANDS,
@@ -50,6 +52,24 @@ export function getProductsToShop(
   return {
     type: GET_PRODUCTS_TO_SHOP,
     payload: request
+  };
+}
+
+export function addProduct(data) {
+  const request = axios
+    .post(`${PRODUCT_SERVER}/article`, data)
+    .then(response => response.data);
+
+  return {
+    type: ADD_PRODUCT,
+    payload: request
+  };
+}
+
+export function clearProduct() {
+  return {
+    type: CLEAR_PRODUCT,
+    payload: ""
   };
 }
 

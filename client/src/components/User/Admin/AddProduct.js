@@ -6,16 +6,22 @@ import {
   populateOptionFields,
   update,
   generateData,
+  resetFields,
   isFormValid
 } from "../../utils/Form/FormActions";
 
 import { connect } from "react-redux";
-import { getBrands, getWoods } from "../../../store/actions/product_actions";
+import {
+  getBrands,
+  getWoods,
+  addProduct,
+  clearProduct
+} from "../../../store/actions/product_actions";
 
 class AddProduct extends Component {
   state = {
     formError: false,
-    formSucces: false,
+    formSuccess: false,
     formdata: {
       name: {
         element: "input",
@@ -204,14 +210,47 @@ class AddProduct extends Component {
   };
 
   updateForm = element => {
-    const newFormdata = update(element, this.state.formdata, "register");
+    const newFormdata = update(element, this.state.formdata, "products");
     this.setState({
       formError: false,
       formdata: newFormdata
     });
   };
 
-  submitForm = () => {};
+  resetFieldHandler = () => {
+    const newFormdata = resetFields(this.state.formdata, "products");
+    this.setState({
+      formdata: newFormdata,
+      formSuccess: true
+    });
+    setTimeout(() => {
+      this.setState(
+        {
+          formSuccess: false
+        },
+        () => this.props.dispatch(clearProduct())
+      );
+    }, 3000);
+  };
+
+  submitForm = event => {
+    event.preventDefault();
+
+    let dataToSubmit = generateData(this.state.formdata, "products");
+    let formIsValid = isFormValid(this.state.formdata, "products");
+
+    if (formIsValid) {
+      this.props.dispatch(addProduct(dataToSubmit)).then(() => {
+        if (this.props.products.addProduct.success) {
+          this.resetFieldHandler();
+        } else {
+          this.setState({ formError: true });
+        }
+      });
+    } else {
+      this.setState({ formError: true });
+    }
+  };
 
   render() {
     return (
@@ -222,7 +261,7 @@ class AddProduct extends Component {
             <FormField
               id="name"
               formdata={this.state.formdata.name}
-              change={() => console.log("change")}
+              change={element => this.updateForm(element)}
             />
             <FormField
               id="description"
@@ -271,7 +310,7 @@ class AddProduct extends Component {
               formdata={this.state.formdata.publish}
               change={element => this.updateForm(element)}
             />
-            {this.state.formSucces ? (
+            {this.state.formSuccess ? (
               <div className="form_success">Success</div>
             ) : null}
             {this.state.formError ? (
