@@ -33,7 +33,22 @@ export default class FileUpload extends Component {
     });
   };
 
-  onRemove = () => {};
+  onRemove = id => {
+    axios.get(`/api/users/removeimage?public_id=${id}`).then(response => {
+      let images = this.state.uploadedFiles.filter(item => {
+        return item.public_id !== id;
+      });
+
+      this.setState(
+        {
+          uploadedFiles: images
+        },
+        () => {
+          this.props.imagesHandler(images);
+        }
+      );
+    });
+  };
 
   showUploadedImages = () =>
     this.state.uploadedFiles.map(item => (
@@ -48,6 +63,15 @@ export default class FileUpload extends Component {
         />
       </div>
     ));
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.reset) {
+      return (prevState = {
+        uploadedFiles: []
+      });
+    }
+    return null;
+  }
 
   render() {
     return (
