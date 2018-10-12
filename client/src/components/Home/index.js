@@ -11,9 +11,7 @@ import {
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(getProductBySell()).then(response => {
-      console.log(response);
-    });
+    this.props.dispatch(getProductBySell()).then(response => {});
     this.props.dispatch(getProductByArrival());
   }
 
