@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  GET_PRODUCT_DETAIL,
+  CLEAR_PRODUCT_DETAIL,
   ADD_PRODUCT,
   CLEAR_PRODUCT,
   GET_PRODUCT_BY_SELL,
@@ -11,6 +13,24 @@ import {
   GET_PRODUCTS_TO_SHOP
 } from "./types";
 import { PRODUCT_SERVER } from "../../components/utils/misc";
+
+export function getProductDetail(id) {
+  const request = axios
+    .get(`${PRODUCT_SERVER}/articles_by_id?id=${id}&type=single`)
+    .then(response => response.data[0]);
+
+  return {
+    type: GET_PRODUCT_DETAIL,
+    payload: request
+  };
+}
+
+export function clearProductDetail() {
+  return {
+    type: CLEAR_PRODUCT_DETAIL,
+    payload: ""
+  };
+}
 
 export function getProductBySell() {
   const request = axios
