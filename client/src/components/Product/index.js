@@ -10,6 +10,8 @@ import {
   clearProductDetail
 } from "../../store/actions/product_actions";
 
+import { addToCart } from "../../store/actions/user_actions";
+
 class ProductPage extends Component {
   componentDidMount = () => {
     const id = this.props.match.params.id;
@@ -22,6 +24,10 @@ class ProductPage extends Component {
 
   componentWillUnmount() {
     this.props.dispatch(clearProductDetail());
+  }
+
+  addToCartHandler(id) {
+    this.props.dispatch(addToCart(id));
   }
 
   render() {

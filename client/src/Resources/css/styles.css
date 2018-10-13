@@ -288,7 +288,7 @@ header .container .right .top,
 header .container .right .bottom {
     text-transform: uppercase;
     font-weight: 700;
-    text-align: right;
+    text-align: left;
     color: #ffffff;
     font-size: 15px;
     padding: 10px 20px;
