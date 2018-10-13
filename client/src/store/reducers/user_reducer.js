@@ -1,4 +1,5 @@
 import {
+  ADD_TO_CART,
   LOGIN_USER,
   REGISTER_USER,
   AUTH_USER,
@@ -15,6 +16,14 @@ export default function(state = {}, action) {
       return { ...state, userData: action.payload };
     case LOGOUT_USER:
       return { ...state };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          cart: action.payload
+        }
+      };
     default:
       return state;
   }

@@ -91,11 +91,10 @@ class Header extends Component {
 
     return list.map((item, i) => {
       if (item.name !== "My Cart") {
-        this.defaultLink(item, i);
+        return this.defaultLink(item, i);
       } else {
-        this.cartLink(item, i);
+        return this.cartLink(item, i);
       }
-      return this.defaultLink(item, i);
     });
   };
 

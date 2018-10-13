@@ -4,15 +4,16 @@ import MyButton from "../utils/Button";
 
 class UserDashboard extends Component {
   render() {
+    const userData = this.props.user.userData;
     return (
       <UserLayout>
         <div>
           <div className="user_nfo_panel">
             <h1>User information</h1>
             <div>
-              <span>name</span>
-              <span>lastname</span>
-              <span>email</span>
+              <span>{userData.name}</span>
+              <span>{userData.lastname}</span>
+              <span>{userData.email}</span>
             </div>
             <MyButton
               type="default"

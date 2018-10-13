@@ -17,7 +17,6 @@ class ProdImg extends Component {
       });
       this.setState({ lightboxImages });
     }
-    console.log(this.state.lightboxImages);
   };
 
   renderCardImage = images => {
