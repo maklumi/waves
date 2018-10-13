@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserLayout from "../../hoc/User";
+import ProductBlock from "../utils/User/ProductBlock";
 
 import { connect } from "react-redux";
 
@@ -34,8 +35,22 @@ class Cart extends Component {
     }
   };
 
+  removeFromCart = id => {};
   render() {
-    return <UserLayout>Cart</UserLayout>;
+    return (
+      <UserLayout>
+        <div>
+          <h1>My cart</h1>
+          <div className="user_cart">
+            <ProductBlock
+              products={this.props.user}
+              type="cart"
+              removeItem={id => this.removeFromCart(id)}
+            />
+          </div>
+        </div>
+      </UserLayout>
+    );
   }
 }
 

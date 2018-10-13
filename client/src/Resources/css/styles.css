@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width: 1100px;
+    width: 56rem;
     margin: 0 auto;
 }
 
@@ -275,7 +275,7 @@ header .container {
 }
 
 header .container .left {
-    width: 250px;
+    width: 14rem;
 }
 
 header .container .right {
@@ -534,7 +534,7 @@ footer .business_nfo .nfo {
 }
 
 .card_item_wrapper.grid_bars .image {
-    width: 420px;
+    width: 26.25rem;
     height: 211px;
     border: none;
 
@@ -589,7 +589,7 @@ footer .business_nfo .nfo {
 }
 
 .shop_wrapper .right {
-    width: 800px;
+    width: 50rem;
 }
 
 .collapse_title span {
@@ -648,7 +648,7 @@ footer .business_nfo .nfo {
 .product_detail_wrapper .product_tags .tag svg {
     font-size: 43px;
     color: #e4e4e4;
-    width: 50px;
+    width: 3.125rem;
 }
 
 .product_detail_wrapper .product_tags .tag .tag_text {
@@ -664,7 +664,7 @@ footer .business_nfo .nfo {
 }
 
 .product_detail_wrapper .product_actions .cart {
-    width: 149px;
+    width: 9.375rem;
 }
 
 .user_cart_sum {
@@ -792,7 +792,7 @@ footer .business_nfo .nfo {
     font-size: 20px;
     font-weight: 300;
     padding: 10px 0px;
-    width: 280px;
+    width: 14rem;
 }
 
 .user_container .user_right {
@@ -880,7 +880,7 @@ footer .business_nfo .nfo {
 }
 
 .brands_container .category_item {
-    width: 200px;
+    width: 12.5rem;
     font-size: 20px;
     font-weight: 300;
     border: 1px solid #f1f1f1;
