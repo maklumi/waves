@@ -264,7 +264,7 @@ app.post("/api/users/addToCart", auth, (req, res) => {
     let duplicate = false;
 
     doc.cart.forEach(item => {
-      if (item.id === req.query.productId) {
+      if (item.id == req.query.productId) {
         duplicate = true;
       }
     });

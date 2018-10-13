@@ -2,6 +2,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
 export const AUTH_USER = "AUTH_USER ";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const ADD_TO_CART = "ADD_TO_CART";
 
 export const GET_PRODUCT_BY_SELL = "GET_PRODUCT_BY_SELL";

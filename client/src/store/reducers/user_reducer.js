@@ -1,4 +1,5 @@
 import {
+  GET_CART_ITEMS,
   ADD_TO_CART,
   LOGIN_USER,
   REGISTER_USER,
@@ -24,6 +25,8 @@ export default function(state = {}, action) {
           cart: action.payload
         }
       };
+    case GET_CART_ITEMS:
+      return { ...state, cartDetail: action.payload };
     default:
       return state;
   }
