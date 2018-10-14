@@ -40,7 +40,7 @@ const UserProductBlock = ({ products, removeItem }) => {
             <div className="item btn">
               <div
                 className="cart_remove_btn"
-                onClick={() => this.removeItem(product.id)}
+                onClick={() => removeItem(product._id)}
               >
                 Remove
               </div>

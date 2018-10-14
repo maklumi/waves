@@ -1,5 +1,6 @@
 import {
   GET_CART_ITEMS,
+  REMOVE_CART_ITEM,
   ADD_TO_CART,
   LOGIN_USER,
   REGISTER_USER,
@@ -27,6 +28,15 @@ export default function(state = {}, action) {
       };
     case GET_CART_ITEMS:
       return { ...state, cartDetail: action.payload };
+    case REMOVE_CART_ITEM:
+      return {
+        ...state,
+        cartDetail: action.payload.cartDetail,
+        userData: {
+          ...state.userData,
+          cart: action.payload.cart
+        }
+      };
     default:
       return state;
   }
