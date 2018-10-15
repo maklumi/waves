@@ -4,7 +4,11 @@ import ProductBlock from "../utils/User/ProductBlock";
 
 import { connect } from "react-redux";
 
-import { getCartItems, removeCartItem } from "../../store/actions/user_actions";
+import {
+  getCartItems,
+  removeCartItem,
+  onSuccessBuy
+} from "../../store/actions/user_actions";
 import FontAwesomeIcon from "@fortawesome/react-fontawesome";
 import { faFrown, faSmile } from "@fortawesome/fontawesome-free-solid";
 
@@ -72,10 +76,21 @@ class Cart extends Component {
   transactionError = data => {};
   transactionCancelled = data => {};
   transactionSuccess = data => {
-    this.setState({
-      showTotal: false,
-      showSuccess: true
-    });
+    this.props
+      .dispatch(
+        onSuccessBuy({
+          cartDetail: this.props.user.cartDetail,
+          paymentData: data
+        })
+      )
+      .then(() => {
+        if (this.props.user.successBuy) {
+          this.setState({
+            showTotal: false,
+            showSuccess: true
+          });
+        }
+      });
   };
 
   render() {

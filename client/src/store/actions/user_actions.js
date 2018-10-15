@@ -6,6 +6,7 @@ import {
   LOGOUT_USER,
   GET_CART_ITEMS,
   REMOVE_CART_ITEM,
+  ON_SUCCESS_BUY,
   ADD_TO_CART
 } from "./types";
 import { USER_SERVER, PRODUCT_SERVER } from "../../components/utils/misc";
@@ -101,6 +102,17 @@ export function removeCartItem(id) {
 
   return {
     type: REMOVE_CART_ITEM,
+    payload: request
+  };
+}
+
+export function onSuccessBuy(data) {
+  const request = axios
+    .post(`${USER_SERVER}/successBuy`, data)
+    .then(response => response.data);
+
+  return {
+    type: ON_SUCCESS_BUY,
     payload: request
   };
 }

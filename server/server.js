@@ -373,7 +373,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
           products.push({ id: item.id, quantity: item.quantity });
         });
 
-        async.eachOfSeries(
+        async.eachSeries(
           products,
           (item, callback) => {
             Product.update(
@@ -389,7 +389,7 @@ app.post("/api/users/successBuy", auth, (req, res) => {
           },
           err => {
             if (err) return res.json({ success: false, err });
-            return res.success(200).json({
+            return res.status(200).json({
               success: true,
               cart: user.cart,
               cartDetail: []
