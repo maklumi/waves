@@ -15,6 +15,7 @@ import UpdateProfile from "./components/User/UpdateProfile";
 import UserDashboard from "./components/User";
 import AddProduct from "./components/User/Admin/AddProduct";
 import ManageCategories from "./components/User/Admin/ManageCategories";
+import ManageSite from "./components/User/Admin/ManageSite.js";
 
 const Routes = () => {
   return (
@@ -34,6 +35,11 @@ const Routes = () => {
           path="/admin/manage_categories"
           exact
           component={Auth(ManageCategories, true)}
+        />
+        <Route
+          path="/admin/site_info"
+          exact
+          component={Auth(ManageSite, true)}
         />
 
         <Route
