@@ -25,7 +25,7 @@ export default class Paypal extends Component {
         "AVeL0Mr_RrTZ2ZNvTjg6-9Lk_EoHYZ3vMPWb6yEAgvJKyqGLkO5veREnI8AK5_j43-SR8Rd_mtMuuzV3",
       production: ""
     };
-
+    /*
     const sampleResponse = {
       paid: true,
       cancelled: false,
@@ -44,7 +44,7 @@ export default class Paypal extends Component {
       },
       email: "maklumi-buyer@yahoo.com"
     };
-
+*/
     return (
       <div>
         <PaypalExpressBtn

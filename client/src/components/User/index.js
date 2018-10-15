@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserLayout from "../../hoc/User";
 import MyButton from "../utils/Button";
+import UserHistoryBlock from "../utils/User/HistoryBlock";
 
 class UserDashboard extends Component {
   render() {
@@ -22,10 +23,14 @@ class UserDashboard extends Component {
             />
           </div>
 
-          <div className="user_nfo_panel">
-            <h1>Purchase history</h1>
-            <div className="user_product_block_wrapper">history</div>
-          </div>
+          {userData.history ? (
+            <div className="user_nfo_panel">
+              <h1>Purchase history</h1>
+              <div className="user_product_block_wrapper">
+                <UserHistoryBlock products={userData.history} />
+              </div>
+            </div>
+          ) : null}
         </div>
       </UserLayout>
     );
