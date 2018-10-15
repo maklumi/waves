@@ -1,0 +1,13 @@
+{
+    "_id" : ObjectId("5bc453fcd1a33daa9d49a561"),
+    "name" : "Site",
+    "featured" : [],
+    "siteInfo" : [ 
+        {
+            "address" : "JALAN RESAK",
+            "hours" : "8am to 8pm",
+            "phone" : "767609676",
+            "email" : "admi@wave.com"
+        }
+    ]
+}

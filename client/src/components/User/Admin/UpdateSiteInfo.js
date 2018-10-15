@@ -9,7 +9,10 @@ import {
 } from "../../utils/Form/FormActions";
 
 import { connect } from "react-redux";
-import { getSiteData } from "../../../store/actions/site_actions";
+import {
+  getSiteData,
+  updateSiteData
+} from "../../../store/actions/site_actions";
 
 class UpdateSiteInfo extends Component {
   state = {
@@ -103,7 +106,20 @@ class UpdateSiteInfo extends Component {
     let formIsValid = isFormValid(this.state.formdata, "update_site");
 
     if (formIsValid) {
-      console.log(dataToSubmit);
+      this.props.dispatch(updateSiteData(dataToSubmit)).then(() => {
+        this.setState(
+          {
+            formSuccess: true
+          },
+          () => {
+            setTimeout(() => {
+              this.setState({
+                formSuccess: false
+              });
+            }, 2000);
+          }
+        );
+      });
     } else {
       this.setState({ formError: true });
     }
