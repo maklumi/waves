@@ -9,6 +9,7 @@ import {
 } from "../../utils/Form/FormActions";
 
 import { connect } from "react-redux";
+import { getSiteData } from "../../../store/actions/site_actions";
 
 class UpdateSiteInfo extends Component {
   state = {
@@ -106,6 +107,19 @@ class UpdateSiteInfo extends Component {
     } else {
       this.setState({ formError: true });
     }
+  };
+
+  componentDidMount = () => {
+    this.props.dispatch(getSiteData()).then(() => {
+      console.log(this.props.site.siteData[0]);
+      const newFormdata = populateFields(
+        this.state.formdata,
+        this.props.site.siteData[0]
+      );
+      this.setState({
+        formdata: newFormdata
+      });
+    });
   };
 
   render() {
