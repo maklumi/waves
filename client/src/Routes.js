@@ -10,6 +10,7 @@ import Register from "./components/Register_login/Register";
 import Shop from "./components/Shop";
 import ProductPage from "./components/Product";
 import CartPage from "./components/User/Cart";
+import UpdateProfile from "./components/User/UpdateProfile";
 
 import UserDashboard from "./components/User";
 import AddProduct from "./components/User/Admin/AddProduct";
@@ -35,6 +36,11 @@ const Routes = () => {
           component={Auth(ManageCategories, true)}
         />
 
+        <Route
+          path="/user/user_profile"
+          exact
+          component={Auth(UpdateProfile, true)}
+        />
         <Route path="/user/cart" exact component={Auth(CartPage, null)} />
         <Route
           path="/product_detail/:id"
